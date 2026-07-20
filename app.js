@@ -200,7 +200,8 @@ const TEMPLATES = [
       {id:'signed_title',label:'Signer Title',type:'text',placeholder:'Co-Founder & CEO'},
     ],
     generate(d){return wrap(`
-      <p>NAME</p>
+      <p>${fmtDate(d.date)}</p>
+      <p>${d.prefix||''} ${d.client_name||'[NAME]'},</p>
       <p>Thank you for reaching out to The Uncuffed Project and for your interest in our program. We appreciate you taking the time to connect with us and share a part of your journey.</p>
       <p>To ensure we are able to thoughtfully assess each individual's needs and prepare appropriate support options, we begin our housing application process approximately six months prior to a person's anticipated release date. At that time, we would be happy to send you an updated questionnaire so we can learn more about your circumstances, identify potential barriers to reentry, and explore resources that may help support your transition back into the community.</p>
       <p>While we are unable to begin the housing application process at this time, we encourage you to begin engaging with our program before your release. The Uncuffed Project offers correspondence courses designed specifically for justice-impacted individuals. These courses provide educational opportunities, personal development tools, and encouragement intended to support growth, accountability, and preparation for successful reentry.</p>
