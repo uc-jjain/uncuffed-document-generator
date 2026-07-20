@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Uncuffed Project – Document Generator</title>
+  <meta name="description" content="Automated document generation system for The Uncuffed Project, Inc. Generate, fill, and print official letters and forms instantly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+            <path d="M8 9h12M8 14h8M8 19h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">The Uncuffed Project</span>
+          <span class="logo-sub">Document Generator</span>
+        </div>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>Auto-Fill System</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Step 1: Select Template -->
+    <section class="step-section" id="step-select">
+      <div class="step-header">
+        <div>
+          <h1 class="step-title">Generate a Document</h1>
+          <p class="step-desc">Select the document type you want to create, fill in the required details, and download or print instantly.</p>
+        </div>
+      </div>
+
+
+
+      <!-- Category Filter -->
+      <div class="category-filter" id="category-filter">
+        <button class="cat-btn active" data-cat="all">All Documents</button>
+        <button class="cat-btn" data-cat="acceptance">Acceptance Letters</button>
+        <button class="cat-btn" data-cat="denial">Denial Letters</button>
+        <button class="cat-btn" data-cat="employment">Employment</button>
+        <button class="cat-btn" data-cat="residency">Residency / Address</button>
+        <button class="cat-btn" data-cat="legal">Legal / Parole</button>
+        <button class="cat-btn" data-cat="hr">HR / Staff</button>
+        <button class="cat-btn" data-cat="nda">NDA / Agreements</button>
+        <button class="cat-btn" data-cat="notice">Notices</button>
+        <button class="cat-btn" data-cat="other">Other</button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 20 20" fill="none" width="18" height="18" style="width:18px;height:18px;flex-shrink:0;">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search documents…" autocomplete="off" />
+      </div>
+
+      <!-- Template Grid -->
+      <div class="template-grid" id="template-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Step 2: Fill Form -->
+    <section class="step-section hidden" id="step-form">
+      <div class="step-header">
+        <button class="back-btn" id="back-btn">
+          <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back
+        </button>
+        <div>
+          <h2 class="step-title" id="form-title">Fill in Details</h2>
+          <p class="step-desc" id="form-desc">Complete all fields below to generate your document.</p>
+        </div>
+      </div>
+
+      <div class="form-layout">
+        <div class="form-panel">
+          <form id="doc-form" autocomplete="off">
+            <div id="form-fields"></div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="generate-btn">
+                <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                  <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Generate Document
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel" id="preview-panel">
+          <div class="preview-header">
+            <span>Live Preview</span>
+            <div class="preview-actions">
+              <button class="btn-icon" id="print-btn" title="Download as PDF">
+                <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                  <path d="M10 3v10M6 9l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 16h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Download
+              </button>
+            </div>
+          </div>
+          <div class="preview-body" id="preview-body">
+            <div class="preview-placeholder">
+              <svg viewBox="0 0 60 80" fill="none" width="60">
+                <rect x="5" y="5" width="50" height="70" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+                <rect x="15" y="20" width="30" height="3" rx="1.5" fill="#334155"/>
+                <rect x="15" y="28" width="25" height="2" rx="1" fill="#1e3a5f" opacity="0.8"/>
+                <rect x="15" y="34" width="28" height="2" rx="1" fill="#1e3a5f" opacity="0.8"/>
+                <rect x="15" y="40" width="22" height="2" rx="1" fill="#1e3a5f" opacity="0.6"/>
+                <rect x="15" y="46" width="26" height="2" rx="1" fill="#1e3a5f" opacity="0.6"/>
+              </svg>
+              <p>Fill in the form to see a live preview</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Print-only area -->
+  <div id="print-area" class="print-area"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
