@@ -146,14 +146,12 @@ const TEMPLATES = [
       {id:'signed_by',label:'Signed By',type:'text',placeholder:"Damon L. Cooke"},
       {id:'signed_title',label:'Signer Title',type:'text',placeholder:'Founder & CEO'},
     ],
-    generate(d){return wrap(`
-      <p>690 Walnut Ave. #210</p>
-      <p>Vallejo, CA 94592</p>
-      <p>December 10th, 2025</p>
-      <p>Re: Letter of Housing Placement Acceptance for Mr. /Mrs.</p>
+        generate(d){return wrap(`
+      <p>${fmtDate(d.date)}</p>
+      <p>Re: Letter of Housing Placement Acceptance for ${V(d.prefix)} ${V(d.client_name)}</p>
       <p>To Whom It May Concern,</p>
-      <p>Our program includes all forms of medical facilitation, immediate essentials, educational tools, and long-term services to provide a smooth and healthy transition from incarceration to home. We also have a working model for empirical data to assist in the emotional intelligence and strong recidivism for those who may have participated in several forms of {violation/condition; e.g: Domestic Violence, Sexual Offense, Murder, etc}. such as ${V(d.prefix)} ${V(d.client_name)}./p>
-      <p>We understand Mr. /Mrs.-----------'s journey and we know that certain situations can sometimes be the catalyst to preventing future criminal acts, however we like to increase that probability by introducing a soft curriculum for change. We will assign Mr. Bruce a personal "Credible Messenger" to assist in this navigation. No one should have to take this journey alone and that's why our program is so effective. The lived experience along with their extensive knowledge and facilitation in the field of Domestic Violence and Toxic Masculinity provides valuable insight.</p>
+      <p>Our program includes all forms of medical facilitation, immediate essentials, educational tools, and long-term services to provide a smooth and healthy transition from incarceration to home. We also have a working model for empirical data to assist in the emotional intelligence and strong recidivism for those who may have participated in several forms of {violation/condition; e.g: Domestic Violence, Sexual Offense, Murder, etc} such as ${V(d.prefix)} ${V(d.client_name)}.</p>
+      <p>We understand ${V(d.prefix)} ${V(d.client_name)}'s journey and we know that certain situations can sometimes be the catalyst to preventing future criminal acts, however we like to increase that probability by introducing a soft curriculum for change. We will assign ${V(d.prefix)} ${V(d.client_name)} a personal "Credible Messenger" to assist in this navigation. No one should have to take this journey alone and that's why our program is so effective. The lived experience along with their extensive knowledge and facilitation in the field of Domestic Violence and Toxic Masculinity provides valuable insight.</p>
       <p>Thank you for your time and consideration in this matter.</p>
       ${sig(d.signed_by,d.signed_title)}
     `);}
